@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-version: 0.1 Beta
+version: 0.2 Beta
 
 License of source code: WTFPL
 -----------------------------
@@ -35,3 +35,11 @@ This mod changes the HUD of Minetest. It adds a costum crosshair, a improved hea
 Also it adds hunger to the game and and hunger bar to the HUD.
 
 Furthermore it disables the current way of drowning (credits go to PilzAdam) and it will have an LUA-based drowing next versions.
+
+
+You can create a "hud.conf" to costumize the positions of health and hunger bar. Take a look at "hud.conf.example" to get more infos.
+
+Hunger:
+This mod adds hunger to the game. You can disable this by setting "HUD_HUNGER_ENABLE = false" in "hud.conf".
+
+Currently only apples and bread from farmin is supported. One apple fills up the hunger bar by 1 bread, 1 bread (from farming) 2 breads in bar.

@@ -1,0 +1,7 @@
+0.2 Beta
+--------
+
+- added support of costum config files
+- you can eat max. 50% more than before (although it isnt shown in hunger bar)
+- you get healed with 8 breads and more (in hunger bar) now
+- a bread (from farming) == 2 breads in hunger bar

@@ -1,10 +1,12 @@
 function hud.item_eat(hunger_change, replace_with_item)
+			minetest.chat_send_all("eat")
 	return function(itemstack, user, pointed_thing)
 		if itemstack:take_item() ~= nil then
 			local h = tonumber(hud.hunger[user:get_player_name()])
 			h=h+hunger_change
-			if h>20 then h=20 end
+			if h>30 then h=30 end
 			hud.hunger[user:get_player_name()]=h
+			hud.save_hunger(user)
 			itemstack:add_item(replace_with_item) -- note: replace_with_item is optional
 			--sound:eat
 		end
@@ -30,5 +32,5 @@ end
 
 overwrite("default:apple", 2, true)
 if minetest.get_modpath("farming") ~= nil then
-	overwrite("farming:bread", 6, false)
+	overwrite("farming:bread", 4, false)
 end
