@@ -1,5 +1,4 @@
 function hud.item_eat(hunger_change, replace_with_item)
-			minetest.chat_send_all("eat")
 	return function(itemstack, user, pointed_thing)
 		if itemstack:take_item() ~= nil then
 			local h = tonumber(hud.hunger[user:get_player_name()])
