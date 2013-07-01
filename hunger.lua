@@ -21,6 +21,7 @@ local function overwrite(name, hunger_change, replace_with_item)
 	minetest.registered_items[name] = tab
 end
 
+minetest.after(0.5, function()--ensure all other mods get loaded
 overwrite("default:apple", 2)
 if minetest.get_modpath("farming") ~= nil then
 	overwrite("farming:bread", 4)
@@ -28,6 +29,7 @@ end
 
 if minetest.get_modpath("mobs") ~= nil then
 	overwrite("mobs:meat", 6)
+	overwrite("mobs:meat_raw", 3)
 	overwrite("mobs:rat_cooked", 5)
 end
 
@@ -48,3 +50,4 @@ if minetest.get_modpath("dwarves") ~= nil then
 	overwrite("dwarves:tequila_with_lime", 2)
 	overwrite("dwarves:sake", 2)
 end
+end)
