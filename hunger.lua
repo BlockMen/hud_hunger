@@ -14,23 +14,37 @@ function hud.item_eat(hunger_change, replace_with_item)
 	end
 end
 
-local function overwrite(name, hunger_change, as_node)
+local function overwrite(name, hunger_change, replace_with_item)
 	local tab = minetest.registered_items[name]
 	if tab == nil then return end
-	local tab2 = {}
-	for i,v in pairs(tab) do
-		tab2[i] = v
-	end
-	tab2.on_use = hud.item_eat(hunger_change)
-
-	if as_node then
-		minetest.register_node(":"..name, tab2)
-	else
-		minetest.register_craftitem(":"..name, tab2)
-	end
+	tab.on_use = hud.item_eat(hunger_change)--, replace_with_item)
+	minetest.registered_items[name] = tab
 end
 
-overwrite("default:apple", 2, true)
+overwrite("default:apple", 2)
 if minetest.get_modpath("farming") ~= nil then
-	overwrite("farming:bread", 4, false)
+	overwrite("farming:bread", 4)
+end
+
+if minetest.get_modpath("mobs") ~= nil then
+	overwrite("mobs:meat", 6)
+	overwrite("mobs:rat_cooked", 5)
+end
+
+if minetest.get_modpath("moretrees") ~= nil then
+	overwrite("moretrees:coconut_milk", 1)
+	overwrite("moretrees:raw_coconut", 2)
+	overwrite("moretrees:acorn_muffin", 3)
+	overwrite("moretrees:spruce_nuts", 1)
+	overwrite("moretrees:pine_nuts", 1)
+	overwrite("moretrees:fir_nuts", 1)
+end
+
+if minetest.get_modpath("dwarves") ~= nil then
+	overwrite("dwarves:beer", 2)
+	overwrite("dwarves:apple_cider", 1)
+	overwrite("dwarves:midus", 2)
+	overwrite("dwarves:tequila", 2)
+	overwrite("dwarves:tequila_with_lime", 2)
+	overwrite("dwarves:sake", 2)
 end
