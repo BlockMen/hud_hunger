@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-version: 0.2 Beta
+version: 0.2.1 Beta
 
 License of source code: WTFPL
 -----------------------------
@@ -42,4 +42,11 @@ You can create a "hud.conf" to costumize the positions of health and hunger bar.
 Hunger:
 This mod adds hunger to the game. You can disable this by setting "HUD_HUNGER_ENABLE = false" in "hud.conf".
 
-Currently only apples and bread from farmin is supported. One apple fills up the hunger bar by 1 bread, 1 bread (from farming) 2 breads in bar.
+Currently supported food:
+- Apples (default)
+- Bread (default)
+- Drawves (beer and such)
+- Mooretrees
+- Simple mobs
+
+One apple fills up the hunger bar by 1 bread, 1 bread (from farming) 2 breads in bar.
