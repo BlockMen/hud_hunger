@@ -5,3 +5,8 @@
 - you can eat max. 50% more than before (although it isnt shown in hunger bar)
 - you get healed with 8 breads and more (in hunger bar) now
 - a bread (from farming) == 2 breads in hunger bar
+
+0.2.1 Beta
+----------
+- tweaked override of food
+- added support for food of dwares, moretrees and simple mobs
