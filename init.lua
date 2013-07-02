@@ -25,7 +25,7 @@ if set then dofile(minetest.get_modpath("hud").."/hud.conf") end
 --minetest.after(SAVE_INTERVAL, timer, SAVE_INTERVAL)
 
 local function hide_builtin(player)
-	 player:hud_set_flags({crosshair = false, hotbar = true, healthbar = false, wielditem = true, breathbar = DISABLE_DROWNING})
+	 player:hud_set_flags({crosshair = false, hotbar = true, healthbar = false, wielditem = true, breathbar = HUD_DISABLE_DROWNING})
 end
 
 
