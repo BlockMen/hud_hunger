@@ -49,4 +49,25 @@ if minetest.get_modpath("dwarves") ~= nil then
 	overwrite("dwarves:tequila_with_lime", 2)
 	overwrite("dwarves:sake", 2)
 end
+
+if minetest.get_modpath("animalmaterials") ~= nil then
+	overwrite("animalmaterials:milk", 2)
+	overwrite("animalmaterials:meat_raw", 3)
+	overwrite("animalmaterials:meat_pork", 3)
+	overwrite("animalmaterials:meat_beef", 3)
+	overwrite("animalmaterials:meat_chicken", 3)
+	overwrite("animalmaterials:meat_lamb", 3)
+	overwrite("animalmaterials:meat_venison", 3)
+	--overwrite("animalmaterials:meat_undead", 3)-- -3 damage
+	--overwrite("animalmaterials:meat_toxic", 3)-- -5 damage
+	overwrite("animalmaterials:meat_ostrich", 3)
+	overwrite("animalmaterials:fish_bluewhite", 2)
+	overwrite("animalmaterials:fish_clownfish", 2)
+end
+
+if minetest.get_modpath("fishing") ~= nil then
+	overwrite("fishing:fish_raw", 2)
+	overwrite("fishing:fish", 4)
+	overwrite("fishing:sushi", 6)
+end
 end)
