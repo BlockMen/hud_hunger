@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-version: 0.2.2 Beta
+version: 0.2.3 Beta
 
 License of source code: WTFPL
 -----------------------------
@@ -50,5 +50,6 @@ Currently supported food:
 - Simple mobs
 - Animalmaterials (mobf modpack)
 - Fishing
+- Glooptest
 
 One apple fills up the hunger bar by 1 bread, 1 bread (from farming) 2 breads in bar.
