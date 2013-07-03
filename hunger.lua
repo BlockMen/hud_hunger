@@ -70,4 +70,8 @@ if minetest.get_modpath("fishing") ~= nil then
 	overwrite("fishing:fish", 4)
 	overwrite("fishing:sushi", 6)
 end
+
+if minetest.get_modpath("glooptest") ~= nil then
+	overwrite("glooptest:kalite_lump", 1)
+end
 end)
