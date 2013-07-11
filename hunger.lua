@@ -74,4 +74,12 @@ end
 if minetest.get_modpath("glooptest") ~= nil then
 	overwrite("glooptest:kalite_lump", 1)
 end
+
+if minetest.get_modpath("bushes") ~= nil then
+	overwrite("bushes:sugar", 1)
+	overwrite("bushes:strawberry", 2)
+	overwrite("bushes:berry_pie_raw", 3)
+	overwrite("bushes:berry_pie_cooked", 4)
+	overwrite("bushes:basket_pies", 15)
+end
 end)
