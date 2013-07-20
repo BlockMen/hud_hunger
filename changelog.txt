@@ -10,3 +10,16 @@
 ----------
 - tweaked override of food
 - added support for food of dwares, moretrees and simple mobs
+
+0.2.2 Beta
+----------
+- added support for food of animalmaterials (mobf modpack),fishing
+
+0.2.3 Beta
+----------
+- added support for food of glooptest and bushes (commit by CheeseKeg)
+
+0.3 Beta
+----------
+- added fancy borders of hud inventory bar (only for screenheight <= 1280)
+

@@ -11,6 +11,8 @@ HUD_HUNGER_TICK = 300			--sets time for loosing 1/2 bread (of 10) (in seconds)
 
 HUD_DISABLE_DROWNING = true		--needed for costum breath bar postion
 
+HUD_ENABLE_FANCY_INVBAR = true		--enables/disables fancy hud inventory border(s)
+
 
 --
 -- crosshair

@@ -5,6 +5,7 @@ hud.hunger = {}
 local hunger_hud = {}
 hud.air = {}
 local air_hud = {}
+local inv_hud = {}
 
 local SAVE_INTERVAL = 0.5*60--currently useless
 
@@ -17,6 +18,9 @@ HUD_HEALTH_POS = {x=0.5,y=1}
 HUD_HEALTH_OFFSET = {x=-175,y=-60}
 HUD_HUNGER_POS = {x=0.5,y=1}
 HUD_HUNGER_OFFSET = {x=15,y=-60}
+HUD_ENABLE_FANCY_INVBAR = true
+HUD_INVBAR_POS = {x=0.5,y=1}
+HUD_INVBAR_OFFSET = {x=0,y=-16}
 
 --load costum settings
 local set = io.open(minetest.get_modpath("hud").."/hud.conf", "r")
@@ -37,6 +41,26 @@ local function costum_hud(player)
             position = HUD_CROSSHAIR_POS,
             scale = {x=1, y=1},
         })
+
+--invbar
+ if HUD_ENABLE_FANCY_INVBAR then
+        player:hud_add({
+            hud_elem_type = "image",
+            text = "hud_inv_bar.png",
+            position = HUD_INVBAR_POS,
+            scale = {x=1, y=1},
+		 offset = HUD_INVBAR_OFFSET,
+        })
+
+	inv_hud[player:get_player_name()] = player:hud_add({
+            hud_elem_type = "image",
+            text = "hud_inv_border.png",
+            position = HUD_INVBAR_POS,
+            scale = {x=1, y=1},
+		 offset = {x=-127+36*(player:get_wield_index()-1),y=-18},
+        })
+ end
+
  if minetest.setting_getbool("enable_damage") then
  --hunger
         player:hud_add({
@@ -92,6 +116,17 @@ local function update_hud(player)
 	player:hud_change(hunger_hud[player:get_player_name()], "number", h)
 end
 
+local function update_inv(player)
+	if inv_hud[player:get_player_name()] ~= nil then player:hud_remove(inv_hud[player:get_player_name()]) end
+	inv_hud[player:get_player_name()] = player:hud_add({
+            hud_elem_type = "image",
+            text = "hud_inv_border.png",
+            position = HUD_INVBAR_POS,
+            scale = {x=1, y=1},
+		 offset = {x=-127+36*(player:get_wield_index()-1),y=-18},
+        })
+end
+
 
 function hud.save_hunger(player)
 	local file = io.open(minetest.get_worldpath().."/hud_"..player:get_player_name().."_hunger", "w+")
@@ -145,6 +180,7 @@ if minetest.setting_getbool("enable_damage") then
 	timer = timer + dtime
 	timer2 = timer2 + dtime
 		for _,player in ipairs(minetest.get_connected_players()) do
+			if HUD_ENABLE_FANCY_INVBAR then update_inv(player) end
 			local h = tonumber(hud.hunger[player:get_player_name()])
 			if HUD_ENABLE_HUNGER and timer > 4 then
 				if h>=16 then
