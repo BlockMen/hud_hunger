@@ -3,14 +3,12 @@ hud = {}
 local health_hud = {}
 hud.hunger = {}
 local hunger_hud = {}
-hud.air = {}
 local air_hud = {}
 local inv_hud = {}
 
 local SAVE_INTERVAL = 0.5*60--currently useless
 
 --default settings
-HUD_DISABLE_DROWNING = true
 HUD_ENABLE_HUNGER = minetest.setting_getbool("enable_damage")
 HUD_HUNGER_TICK = 300
 HUD_CROSSHAIR_POS = {x=0.5, y=0.5}
@@ -18,18 +16,23 @@ HUD_HEALTH_POS = {x=0.5,y=1}
 HUD_HEALTH_OFFSET = {x=-175,y=-60}
 HUD_HUNGER_POS = {x=0.5,y=1}
 HUD_HUNGER_OFFSET = {x=15,y=-60}
+HUD_AIR_POS = {x=0.5,y=1}
+HUD_AIR_OFFSET = {x=15,y=-75}
 HUD_ENABLE_FANCY_INVBAR = true
 HUD_INVBAR_POS = {x=0.5,y=1}
 HUD_INVBAR_OFFSET = {x=0,y=-16}
 
 --load costum settings
 local set = io.open(minetest.get_modpath("hud").."/hud.conf", "r")
-if set then dofile(minetest.get_modpath("hud").."/hud.conf") end
+if set then 
+	dofile(minetest.get_modpath("hud").."/hud.conf")
+	set:close()
+end
 
 --minetest.after(SAVE_INTERVAL, timer, SAVE_INTERVAL)
 
 local function hide_builtin(player)
-	 player:hud_set_flags({crosshair = false, hotbar = true, healthbar = false, wielditem = true, breathbar = HUD_DISABLE_DROWNING})
+	 player:hud_set_flags({crosshair = false, hotbar = true, healthbar = false, wielditem = true, breathbar = false})
 end
 
 
@@ -102,6 +105,17 @@ local function costum_hud(player)
 		alignment = {x=-1,y=-1},
 		offset = HUD_HEALTH_OFFSET,
 	})
+
+ --air
+	air_hud[player:get_player_name()] = player:hud_add({
+		hud_elem_type = "statbar",
+		position = HUD_AIR_POS,
+		scale = {x=1, y=1},
+		text = "hud_air_fg.png",
+		number = 20,
+		alignment = {x=-1,y=-1},
+		offset = HUD_AIR_OFFSET,
+	})
  end
 
 end
@@ -116,15 +130,22 @@ local function update_hud(player)
 	player:hud_change(hunger_hud[player:get_player_name()], "number", h)
 end
 
-local function update_inv(player)
-	if inv_hud[player:get_player_name()] ~= nil then player:hud_remove(inv_hud[player:get_player_name()]) end
-	inv_hud[player:get_player_name()] = player:hud_add({
-            hud_elem_type = "image",
-            text = "hud_inv_border.png",
-            position = HUD_INVBAR_POS,
-            scale = {x=1, y=1},
-		 offset = {x=-127+36*(player:get_wield_index()-1),y=-18},
-        })
+local function update_fast(player)
+--air
+	local air = player:get_breath()*2
+	if player:get_breath() >= 11 then air = 0 end
+	player:hud_change(air_hud[player:get_player_name()], "number", air)
+--hotbar
+	if HUD_ENABLE_FANCY_INVBAR then
+		if inv_hud[player:get_player_name()] ~= nil then player:hud_remove(inv_hud[player:get_player_name()]) end
+		inv_hud[player:get_player_name()] = player:hud_add({
+         	    hud_elem_type = "image",
+        	    text = "hud_inv_border.png",
+        	    position = HUD_INVBAR_POS,
+        	    scale = {x=1, y=1},
+		    offset = {x=-127+36*(player:get_wield_index()-1),y=-18},
+        	})
+	end
 end
 
 
@@ -168,19 +189,15 @@ minetest.register_on_joinplayer(function(player)
 	end)
 end)
 
-local tick = 0
 local timer = 0
 local timer2 = 0
 minetest.after(2.5, function()
 if minetest.setting_getbool("enable_damage") then
 	minetest.register_globalstep(function(dtime)
-	tick = tick + dtime
-	--if tick<0.5 then return end
-	--tick = 0
-	timer = timer + dtime
-	timer2 = timer2 + dtime
+	 timer = timer + dtime
+	 timer2 = timer2 + dtime
 		for _,player in ipairs(minetest.get_connected_players()) do
-			if HUD_ENABLE_FANCY_INVBAR then update_inv(player) end
+			update_fast(player)
 			local h = tonumber(hud.hunger[player:get_player_name()])
 			if HUD_ENABLE_HUNGER and timer > 4 then
 				if h>=16 then
@@ -205,4 +222,3 @@ end
 end)
 
 if HUD_ENABLE_HUNGER then dofile(minetest.get_modpath("hud").."/hunger.lua") end
-if HUD_DISABLE_DROWNING then dofile(minetest.get_modpath("hud").."/no_drowning.lua") end

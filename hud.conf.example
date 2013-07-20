@@ -9,8 +9,6 @@
 HUD_ENABLE_HUNGER = true		--enables/disables hunger
 HUD_HUNGER_TICK = 300			--sets time for loosing 1/2 bread (of 10) (in seconds)
 
-HUD_DISABLE_DROWNING = true		--needed for costum breath bar postion
-
 HUD_ENABLE_FANCY_INVBAR = true		--enables/disables fancy hud inventory border(s)
 
 
@@ -21,20 +19,23 @@ HUD_CROSSHAIR_POS = {x=0.5, y=0.5}  	--recommended to be 0.5,0.5 (centered)
 
 
 --!NOTICE!--
--- >>if damage is disabled neither health bar nor hunger bar is shown
+-- >>if damage is disabled neither health bar nor hunger bar or breath bar is shown
 
 --
 -- health bar
 --
-HUD_HEALTH_POS = {x=0,y=0}		--min 0, max 1
+HUD_HEALTH_POS = {x=0,y=0}			--min 0, max 1
 HUD_HEALTH_OFFSET = {x=5,y=30}		--offset in pixel
 
 --
 -- hunger bar
 --
-HUD_HUNGER_POS = {x=1,y=0}		--min 0, max 1
+HUD_HUNGER_POS = {x=1,y=0}			--min 0, max 1
 HUD_HUNGER_OFFSET = {x=-175,y=30}	--offset in pixel
 
 --
 -- breath bar
 --
+HUD_AIR_POS = {x=0.5,y=1}		--min 0, max 1
+HUD_AIR_OFFSET = {x=15,y=-75}	--offset in pixel
+

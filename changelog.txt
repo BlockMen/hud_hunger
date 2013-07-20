@@ -23,3 +23,7 @@
 ----------
 - added fancy borders of hud inventory bar (only for screenheight <= 1280)
 
+0.4 Beta
+----------
+- enabled drowning
+
