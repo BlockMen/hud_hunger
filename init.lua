@@ -192,33 +192,33 @@ end)
 local timer = 0
 local timer2 = 0
 minetest.after(2.5, function()
-if minetest.setting_getbool("enable_damage") then
 	minetest.register_globalstep(function(dtime)
 	 timer = timer + dtime
 	 timer2 = timer2 + dtime
 		for _,player in ipairs(minetest.get_connected_players()) do
 			update_fast(player)
-			local h = tonumber(hud.hunger[player:get_player_name()])
-			if HUD_ENABLE_HUNGER and timer > 4 then
+			if minetest.setting_getbool("enable_damage") then
+			 local h = tonumber(hud.hunger[player:get_player_name()])
+			 if HUD_ENABLE_HUNGER and timer > 4 then
 				if h>=16 then
 					player:set_hp(player:get_hp()+1)
 				elseif h==1 and minetest.setting_getbool("enable_damage") then
 					if player:get_hp()-1 >= 1 then player:set_hp(player:get_hp()-1) end
 				end
-			end
-			if HUD_ENABLE_HUNGER and timer2>HUD_HUNGER_TICK then
+			 end
+			 if HUD_ENABLE_HUNGER and timer2>HUD_HUNGER_TICK then
 				if h>1 then
 					h=h-1
 					hud.hunger[player:get_player_name()]=h
 					hud.save_hunger(player)
 				end
+			 end
+			 update_hud(player)
 			end
-			update_hud(player)
 		end
 		if timer>4 then timer=0 end
 		if timer2>HUD_HUNGER_TICK then timer2=0 end
 	end)
-end
 end)
 
 if HUD_ENABLE_HUNGER then dofile(minetest.get_modpath("hud").."/hunger.lua") end
