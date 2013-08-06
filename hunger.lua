@@ -82,4 +82,23 @@ if minetest.get_modpath("bushes") ~= nil then
 	overwrite("bushes:berry_pie_cooked", 4)
 	overwrite("bushes:basket_pies", 15)
 end
+
+if minetest.get_modpath("docfarming") ~= nil then
+	overwrite("docfarming:carrot", 2)
+	overwrite("docfarming:cucumber", 2)
+	overwrite("docfarming:corn", 2)
+	overwrite("docfarming:potato", 4)
+	overwrite("docfarming:bakedpotato", 5)
+	overwrite("docfarming:raspberry", 3)
+end
+
+if minetest.get_modpath("farming_plus") ~= nil then
+	overwrite("farming_plus:carrot_item", 3)
+	overwrite("farming_plus:banana", 2)
+	overwrite("farming_plus:orange_item", 2)
+	overwrite("farming_plus:pumpkin_bread", 4)
+	overwrite("farming_plus:strawberry_item", 2)
+	overwrite("farming_plus:tomato_item", 2)
+	overwrite("farming_plus:potatoe_item", 4)
+end
 end)
