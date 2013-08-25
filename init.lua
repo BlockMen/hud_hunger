@@ -28,7 +28,7 @@ end
 --minetest.after(SAVE_INTERVAL, timer, SAVE_INTERVAL)
 
 local function hide_builtin(player)
-	 player:hud_set_flags({crosshair = false, hotbar = true, healthbar = false, wielditem = true, breathbar = false})
+	 player:hud_set_flags({crosshair = true, hotbar = true, healthbar = false, wielditem = true, breathbar = false})
 end
 
 
