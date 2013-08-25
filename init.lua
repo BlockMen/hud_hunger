@@ -11,16 +11,12 @@ local SAVE_INTERVAL = 0.5*60--currently useless
 --default settings
 HUD_ENABLE_HUNGER = minetest.setting_getbool("enable_damage")
 HUD_HUNGER_TICK = 300
-HUD_CROSSHAIR_POS = {x=0.5, y=0.5}
 HUD_HEALTH_POS = {x=0.5,y=1}
 HUD_HEALTH_OFFSET = {x=-175,y=-60}
 HUD_HUNGER_POS = {x=0.5,y=1}
 HUD_HUNGER_OFFSET = {x=15,y=-60}
 HUD_AIR_POS = {x=0.5,y=1}
 HUD_AIR_OFFSET = {x=15,y=-75}
-HUD_ENABLE_FANCY_INVBAR = true
-HUD_INVBAR_POS = {x=0.5,y=1}
-HUD_INVBAR_OFFSET = {x=0,y=-16}
 
 --load costum settings
 local set = io.open(minetest.get_modpath("hud").."/hud.conf", "r")
@@ -37,32 +33,6 @@ end
 
 
 local function costum_hud(player)
---crosshair
-        player:hud_add({
-            hud_elem_type = "image",
-            text = "hud_cross.png",
-            position = HUD_CROSSHAIR_POS,
-            scale = {x=1, y=1},
-        })
-
---invbar
- if HUD_ENABLE_FANCY_INVBAR then
-        player:hud_add({
-            hud_elem_type = "image",
-            text = "hud_inv_bar.png",
-            position = HUD_INVBAR_POS,
-            scale = {x=1, y=1},
-		 offset = HUD_INVBAR_OFFSET,
-        })
-
-	inv_hud[player:get_player_name()] = player:hud_add({
-            hud_elem_type = "image",
-            text = "hud_inv_border.png",
-            position = HUD_INVBAR_POS,
-            scale = {x=1, y=1},
-		 offset = {x=-127+36*(player:get_wield_index()-1),y=-18},
-        })
- end
 
  if minetest.setting_getbool("enable_damage") then
  --hunger
@@ -135,17 +105,6 @@ local function update_fast(player)
 	local air = player:get_breath()*2
 	if player:get_breath() >= 11 then air = 0 end
 	player:hud_change(air_hud[player:get_player_name()], "number", air)
---hotbar
-	if HUD_ENABLE_FANCY_INVBAR then
-		if inv_hud[player:get_player_name()] ~= nil then player:hud_remove(inv_hud[player:get_player_name()]) end
-		inv_hud[player:get_player_name()] = player:hud_add({
-         	    hud_elem_type = "image",
-        	    text = "hud_inv_border.png",
-        	    position = HUD_INVBAR_POS,
-        	    scale = {x=1, y=1},
-		    offset = {x=-127+36*(player:get_wield_index()-1),y=-18},
-        	})
-	end
 end
 
 

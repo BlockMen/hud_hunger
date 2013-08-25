@@ -1,6 +1,5 @@
 0.2 Beta
 --------
-
 - added support of costum config files
 - you can eat max. 50% more than before (although it isnt shown in hunger bar)
 - you get healed with 8 breads and more (in hunger bar) now
@@ -21,9 +20,14 @@
 
 0.3 Beta
 ----------
-- added fancy borders of hud inventory bar (only for screenheight <= 1280)
+- added fancy borders of hud inventory bar (only for screenheight <= 800)
 
 0.4 Beta
 ----------
 - enabled drowning
+
+0.5 Beta
+----------
+- removed the fancy borders of hud inventory bar and moved to new native support
+- moved crosshair to native support tooo
 

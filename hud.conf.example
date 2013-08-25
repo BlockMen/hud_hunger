@@ -9,14 +9,6 @@
 HUD_ENABLE_HUNGER = true		--enables/disables hunger
 HUD_HUNGER_TICK = 300			--sets time for loosing 1/2 bread (of 10) (in seconds)
 
-HUD_ENABLE_FANCY_INVBAR = true		--enables/disables fancy hud inventory border(s)
-
-
---
--- crosshair
---
-HUD_CROSSHAIR_POS = {x=0.5, y=0.5}  	--recommended to be 0.5,0.5 (centered)
-
 
 --!NOTICE!--
 -- >>if damage is disabled neither health bar nor hunger bar or breath bar is shown
