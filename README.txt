@@ -48,5 +48,8 @@ Currently supported food:
 - Fishing
 - Glooptest
 - Bushes
+- Docfarming
+- Farming plus
+- Mtfoods
 
 Example: 1 apple fills up the hunger bar by 1 bread, 1 bread (from farming) 2 breads in bar.
