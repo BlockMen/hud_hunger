@@ -101,4 +101,33 @@ if minetest.get_modpath("farming_plus") ~= nil then
 	overwrite("farming_plus:tomato_item", 2)
 	overwrite("farming_plus:potatoe_item", 4)
 end
+
+if minetest.get_modpath("mtfoods") ~= nil then
+	overwrite("mtfoods:dandelion_milk", 1)
+	overwrite("mtfoods:sugar", 1)
+	overwrite("mtfoods:short_bread", 4)
+	overwrite("mtfoods:cream", 1)
+	overwrite("mtfoods:chocolate", 2)
+	overwrite("mtfoods:cupcake", 2)
+	overwrite("mtfoods:strawberry_shortcake", 2)
+	overwrite("mtfoods:cake", 3)
+	overwrite("mtfoods:chocolate_cake", 3)
+	overwrite("mtfoods:carrot_cake", 3)
+	overwrite("mtfoods:pie_crust", 3)
+	overwrite("mtfoods:apple_pie", 3)
+	overwrite("mtfoods:rhubarb_pie", 2)
+	overwrite("mtfoods:banana_pie", 3)
+	overwrite("mtfoods:pumpkin_pie", 3)
+	overwrite("mtfoods:cookies", 2)
+	overwrite("mtfoods:mlt_burger", 5)
+	overwrite("mtfoods:potato_slices", 2)
+	overwrite("mtfoods:potato_chips", 3)
+	--mtfoods:medicine
+	overwrite("mtfoods:casserole", 3)
+	overwrite("mtfoods:glass_flute", 2)
+	overwrite("mtfoods:orange_juice", 2)
+	overwrite("mtfoods:apple_juice", 2)
+	overwrite("mtfoods:apple_cider", 2)
+	overwrite("mtfoods:cider_rack", 2)
+end
 end)
