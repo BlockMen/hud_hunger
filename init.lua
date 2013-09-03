@@ -161,7 +161,7 @@ minetest.after(2.5, function()
 			 if HUD_ENABLE_HUNGER and timer > 4 then
 				if h>=16 then
 					player:set_hp(player:get_hp()+1)
-				elseif h==1 and minetest.setting_getbool("enable_damage") then
+				elseif h<=1 and minetest.setting_getbool("enable_damage") then
 					if player:get_hp()-1 >= 1 then player:set_hp(player:get_hp()-1) end
 				end
 			 end
