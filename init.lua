@@ -3,7 +3,6 @@ hud = {}
 local health_hud = {}
 hud.hunger = {}
 local hunger_hud = {}
-local air_hud = {}
 local inv_hud = {}
 
 local SAVE_INTERVAL = 0.5*60--currently useless
@@ -22,16 +21,12 @@ local set = io.open(minetest.get_modpath("hud").."/hud.conf", "r")
 if set then 
 	dofile(minetest.get_modpath("hud").."/hud.conf")
 	set:close()
-else
-	if not HUD_ENABLE_HUNGER then
-		HUD_AIR_OFFSET = {x=15,y=0}
-	end
 end
 
 --minetest.after(SAVE_INTERVAL, timer, SAVE_INTERVAL)
 
 local function hide_builtin(player)
-	 player:hud_set_flags({crosshair = true, hotbar = true, healthbar = false, wielditem = true, breathbar = false})
+	 player:hud_set_flags({crosshair = true, hotbar = true, healthbar = false, wielditem = true})
 end
 
 
@@ -148,7 +143,6 @@ minetest.after(2.5, function()
 	 timer = timer + dtime
 	 timer2 = timer2 + dtime
 		for _,player in ipairs(minetest.get_connected_players()) do
-			update_fast(player)
 			if minetest.setting_getbool("enable_damage") then
 			 local h = tonumber(hud.hunger[player:get_player_name()])
 			 if HUD_ENABLE_HUNGER and timer > 4 then
