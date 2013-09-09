@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-version: 0.5 Beta
+version: 1.0
 
 License of source code: WTFPL
 -----------------------------
@@ -35,8 +35,11 @@ Also it adds hunger to the game and and hunger bar to the HUD.
 
 You can create a "hud.conf" to costumize the positions of health, hunger and breath bar. Take a look at "hud.conf.example" to get more infos.
 
+!!NOTICE: Keep in mind if running a server with this mod, that the costum position should be displayed correct on every screen size!!
+
+
 Hunger:
-This mod adds hunger to the game. You can disable this by setting "HUD_HUNGER_ENABLE = false" in "hud.conf".
+This mod adds hunger to the game. You can disable this by setting "HUD_HUNGER_ENABLE = false" in "hud.conf", or "hud_hunger_enable = false" in minetest.conf. In case of conflict hud.conf configuration is dominant.
 
 Currently supported food:
 - Apples (default)
