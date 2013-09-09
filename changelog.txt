@@ -31,11 +31,10 @@
 - removed the fancy borders of hud inventory bar and moved to new native support
 - moved crosshair to native support too
 
-1.0
+0.9
 ---
 - hunger is reset after death
 - health and hunger bar is shown correct on all screen resolutions now
 - switched to changed native hotbar image support
-- fixed revival of player when drown
 - hunger bar is not shown anymore if hunger is disabled
 - hunger can be disabled by minetest.conf ("hud_hunger_enable = false")

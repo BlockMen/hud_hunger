@@ -16,8 +16,6 @@ HUD_HEALTH_POS = {x=0.5,y=0.9}
 HUD_HEALTH_OFFSET = {x=-175, y=2}
 HUD_HUNGER_POS = {x=0.5,y=0.9}
 HUD_HUNGER_OFFSET = {x=15, y=2}
-HUD_AIR_POS = {x=0.5,y=0.9}
-HUD_AIR_OFFSET = {x=15,y=-15}
 
 --load costum settings
 local set = io.open(minetest.get_modpath("hud").."/hud.conf", "r")
@@ -38,10 +36,6 @@ end
 
 
 local function costum_hud(player)
-
- --fancy hotbar
- player:hud_set_hotbar_image("hud_hotbar.png")
- player:hud_set_hotbar_selected_image("hud_hotbar_selected.png")
 
  if minetest.setting_getbool("enable_damage") then
  --hunger
@@ -86,17 +80,6 @@ local function costum_hud(player)
 		alignment = {x=-1,y=-1},
 		offset = HUD_HEALTH_OFFSET,
 	})
-
- --air
-	air_hud[player:get_player_name()] = player:hud_add({
-		hud_elem_type = "statbar",
-		position = HUD_AIR_POS,
-		scale = {x=1, y=1},
-		text = "hud_air_fg.png",
-		number = 20,
-		alignment = {x=-1,y=-1},
-		offset = HUD_AIR_OFFSET,
-	})
  end
 
 end
@@ -110,14 +93,6 @@ local function update_hud(player)
 	if h>20 then h=20 end
 	player:hud_change(hunger_hud[player:get_player_name()], "number", h)
 end
-
-local function update_fast(player)
---air
-	local air = player:get_breath()*2
-	if player:get_breath() >= 11 then air = 0 end
-	player:hud_change(air_hud[player:get_player_name()], "number", air)
-end
-
 
 function hud.save_hunger(player)
 	local file = io.open(minetest.get_worldpath().."/hud_"..player:get_player_name().."_hunger", "w+")
