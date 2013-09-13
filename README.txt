@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-version: 1.0
+version: 1.1
 
 License of source code: WTFPL
 -----------------------------
@@ -15,6 +15,8 @@ hud_hunger_fg.png - PilzAdam (WTFPL), modified by BlockMen
 hud_hunger_bg.png - PilzAdam (WTFPL), modified by BlockMen
 wieldhand.png (from character.png) - Jordach (CC BY-SA 3.0), modified by BlockMen
 hud_air_fg.png - kaeza (WTFPL), modified by BlockMen
+hud_armor_fg.png - Stu (CC BY-SA 3.0), modified by BlockMen
+hud_armor_bg.png - Stu (CC BY-SA 3.0), modified by BlockMen
 
 everything else is WTFPL:
 (c) Copyright BlockMen (2013)
@@ -29,11 +31,12 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 Using the mod:
 --------------
 
-This mod changes the HUD of Minetest. It adds a costum crosshair, a improved health bar, breath bar and a more fancy inventory bar. 
-Also it adds hunger to the game and and hunger bar to the HUD.
+This mod changes the HUD of Minetest. 
+It improves the apperance of the health and breath bar and adds a more fancy hotbar. Furthermore it adds a 
+costum crosshair, an armor bar (only for 3darmor mod) and a hunger bar. It includes also a mechanic for hunger.
 
 
-You can create a "hud.conf" to costumize the positions of health, hunger and breath bar. Take a look at "hud.conf.example" to get more infos.
+You can create a "hud.conf" to costumize the positions of health, hunger, armor and breath bar. Take a look at "hud.conf.example" to get more infos.
 
 !!NOTICE: Keep in mind if running a server with this mod, that the costum position should be displayed correct on every screen size!!
 
@@ -56,3 +59,5 @@ Currently supported food:
 - Mtfoods
 
 Example: 1 apple fills up the hunger bar by 1 bread, 1 bread (from farming) 2 breads in bar.
+
+Altough it show 20 hunger points (10 breads) in hunger bar you can fill it up to 30 points. (5 breads not shown then)
