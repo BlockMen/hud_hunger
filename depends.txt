@@ -1,1 +1,11 @@
 default
+mobs?
+moretrees?
+dwarves?
+animalmaterials?
+fishing?
+glooptest?
+bushes?
+docfarming?
+farmingplus?
+mtfoods?
