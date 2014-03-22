@@ -116,6 +116,25 @@ if minetest.get_modpath("bushes") ~= nil then
 	overwrite("bushes:basket_pies", 15)
 end
 
+if minetest.get_modpath("bushes_classic") then
+	-- bushes_classic mod, as found in the plantlife modpack
+	local berries = {
+	    "strawberry",
+		"blackberry",
+		"blueberry",
+		"raspberry",
+		"gooseberry",
+		"mixed_berry"}
+	for _, berry in ipairs(berries) do
+		if berry ~= "mixed_berry" then
+			overwrite("bushes:"..berry, 1)
+		end
+		overwrite("bushes:"..berry.."_pie_raw", 2)
+		overwrite("bushes:"..berry.."_pie_cooked", 5)
+		overwrite("bushes:basket_"..berry, 15)
+	end
+end
+
 if minetest.get_modpath("docfarming") ~= nil then
 	overwrite("docfarming:carrot", 2)
 	overwrite("docfarming:cucumber", 2)

@@ -9,3 +9,4 @@ bushes?
 docfarming?
 farmingplus?
 mtfoods?
+bushes_classic?
