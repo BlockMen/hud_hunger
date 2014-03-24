@@ -10,3 +10,4 @@ docfarming?
 farmingplus?
 mtfoods?
 bushes_classic?
+mushroom?

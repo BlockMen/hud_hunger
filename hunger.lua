@@ -135,6 +135,11 @@ if minetest.get_modpath("bushes_classic") then
 	end
 end
 
+if minetest.get_modpath("mushroom") ~= nil then
+	overwrite("mushroom:brown", 1)
+	overwrite("mushroom:red", 1, "", 3)
+end
+
 if minetest.get_modpath("docfarming") ~= nil then
 	overwrite("docfarming:carrot", 2)
 	overwrite("docfarming:cucumber", 2)
