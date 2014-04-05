@@ -61,6 +61,8 @@ Currently supported food:
 - mushroom
 - fruit
 - mush45
+- Seaplants (sea)
+- Mobfcooking
 
 Example: 1 apple fills up the hunger bar by 1 bread, 1 bread (from farming) 2 breads in bar.
 

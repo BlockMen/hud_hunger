@@ -102,6 +102,10 @@ if minetest.get_modpath("fishing") ~= nil then
 	overwrite("fishing:fish_raw", 2)
 	overwrite("fishing:fish", 4)
 	overwrite("fishing:sushi", 6)
+	overwrite("fishing:shark", 4)
+	overwrite("fishing:shark_cooked", 8)
+	overwrite("fishing:pike", 4)
+	overwrite("fishing:pike_cooked", 8)
 end
 
 if minetest.get_modpath("glooptest") ~= nil then
@@ -153,10 +157,11 @@ if minetest.get_modpath("farming_plus") ~= nil then
 	overwrite("farming_plus:carrot_item", 3)
 	overwrite("farming_plus:banana", 2)
 	overwrite("farming_plus:orange_item", 2)
-	overwrite("farming_plus:pumpkin_bread", 4)
+	overwrite("farming:pumpkin_bread", 4)
 	overwrite("farming_plus:strawberry_item", 2)
 	overwrite("farming_plus:tomato_item", 2)
-	overwrite("farming_plus:potatoe_item", 4)
+	overwrite("farming_plus:potato_item", 4)
+	overwrite("farming_plus:rhubarb_item", 2)
 end
 
 if minetest.get_modpath("mtfoods") ~= nil then
@@ -197,4 +202,26 @@ end
 
 if minetest.get_modpath("mush45") ~= nil then
 	overwrite("mush45:meal", 4)
+end
+
+if minetest.get_modpath("seaplants") ~= nil then
+	overwrite("seaplants:kelpgreen", 1)
+	overwrite("seaplants:kelpbrown", 1)
+	overwrite("seaplants:seagrassgreen", 1)
+	overwrite("seaplants:seagrassred", 1)
+	overwrite("seaplants:seasaladmix", 6)
+	overwrite("seaplants:kelpgreensalad", 1)
+	overwrite("seaplants:kelpbrownsalad", 1)
+	overwrite("seaplants:seagrassgreensalad", 1)
+	overwrite("seaplants:seagrassgreensalad", 1)
+end
+
+if minetest.get_modpath("mobfcooking") ~= nil then
+	overwrite("mobfcooking:cooked_pork", 6)
+	overwrite("mobfcooking:cooked_ostrich", 6)
+	overwrite("mobfcooking:cooked_beef", 6)
+	overwrite("mobfcooking:cooked_chicken", 6)
+	overwrite("mobfcooking:cooked_lamb", 6)
+	overwrite("mobfcooking:cooked_venison", 6)
+	overwrite("mobfcooking:cooked_fish", 6)
 end
