@@ -103,6 +103,10 @@ if minetest.get_modpath("fishing") ~= nil then
 	overwrite("fishing:fish_raw", 2)
 	overwrite("fishing:fish", 4)
 	overwrite("fishing:sushi", 6)
+	overwrite("fishing:shark", 4)
+	overwrite("fishing:shark_cooked", 8)
+	overwrite("fishing:pike", 4)
+	overwrite("fishing:pike_cooked", 8)
 end
 
 if minetest.get_modpath("glooptest") ~= nil then
@@ -115,6 +119,39 @@ if minetest.get_modpath("bushes") ~= nil then
 	overwrite("bushes:berry_pie_raw", 3)
 	overwrite("bushes:berry_pie_cooked", 4)
 	overwrite("bushes:basket_pies", 15)
+end
+
+if minetest.get_modpath("bushes_classic") ~= nil then
+	overwrite("bushes:sugar", 1)
+	overwrite("bushes:strawberry", 1)
+	overwrite("bushes:blackberry", 1)
+	overwrite("bushes:blueberry", 1)
+	overwrite("bushes:raspberry", 1)
+	overwrite("bushes:gooseberry", 1)
+	overwrite("bushes:strawberry_pie_raw", 4)
+	overwrite("bushes:blackberry_pie_raw", 4)
+	overwrite("bushes:blueberry_pie_raw", 4)
+	overwrite("bushes:raspberry_pie_raw", 4)
+	overwrite("bushes:gooseberry_pie_raw", 4)
+	overwrite("bushes:mixed_berry_pie_raw", 4)
+	overwrite("bushes:strawberry_pie_cooked", 6)
+	overwrite("bushes:blackberry_pie_cooked", 6)
+	overwrite("bushes:blueberry_pie_cooked", 6)
+	overwrite("bushes:raspberry_pie_cooked", 6)
+	overwrite("bushes:gooseberry_pie_cooked", 6)
+	overwrite("bushes:mixed_berry_pie_cooked", 6)
+	overwrite("bushes:strawberry_pie_slice", 1)
+	overwrite("bushes:blackberry_pie_slice", 1)
+	overwrite("bushes:blueberry_pie_slice", 1)
+	overwrite("bushes:raspberry_pie_slice", 1)
+	overwrite("bushes:gooseberry_pie_slice", 1)
+	overwrite("bushes:mixed_berry_pie_slice", 1)
+	overwrite("bushes:basket_strawberry", 18)
+	overwrite("bushes:basket_blackberry", 18)
+	overwrite("bushes:basket_blueberry", 18)
+	overwrite("bushes:basket_raspberry", 18)
+	overwrite("bushes:basket_gooseberry", 18)
+	overwrite("bushes:basket_mixed_berry", 18)
 end
 
 if minetest.get_modpath("docfarming") ~= nil then
@@ -130,10 +167,11 @@ if minetest.get_modpath("farming_plus") ~= nil then
 	overwrite("farming_plus:carrot_item", 3)
 	overwrite("farming_plus:banana", 2)
 	overwrite("farming_plus:orange_item", 2)
-	overwrite("farming_plus:pumpkin_bread", 4)
+	overwrite("farming:pumpkin_bread", 4)
 	overwrite("farming_plus:strawberry_item", 2)
 	overwrite("farming_plus:tomato_item", 2)
-	overwrite("farming_plus:potatoe_item", 4)
+	overwrite("farming_plus:potato_item", 4)
+	overwrite("farming_plus:rhubarb_item", 2)
 end
 
 if minetest.get_modpath("mtfoods") ~= nil then
@@ -163,5 +201,27 @@ if minetest.get_modpath("mtfoods") ~= nil then
 	overwrite("mtfoods:apple_juice", 2)
 	overwrite("mtfoods:apple_cider", 2)
 	overwrite("mtfoods:cider_rack", 2)
+end
+
+if minetest.get_modpath("seaplants") ~= nil then
+	overwrite("seaplants:kelpgreen", 1)
+	overwrite("seaplants:kelpbrown", 1)
+	overwrite("seaplants:seagrassgreen", 1)
+	overwrite("seaplants:seagrassred", 1)
+	overwrite("seaplants:seasaladmix", 6)
+	overwrite("seaplants:kelpgreensalad", 1)
+	overwrite("seaplants:kelpbrownsalad", 1)
+	overwrite("seaplants:seagrassgreensalad", 1)
+	overwrite("seaplants:seagrassgreensalad", 1)
+end
+
+if minetest.get_modpath("mobfcooking") ~= nil then
+	overwrite("mobfcooking:cooked_pork", 6)
+	overwrite("mobfcooking:cooked_ostrich", 6)
+	overwrite("mobfcooking:cooked_beef", 6)
+	overwrite("mobfcooking:cooked_chicken", 6)
+	overwrite("mobfcooking:cooked_lamb", 6)
+	overwrite("mobfcooking:cooked_venison", 6)
+	overwrite("mobfcooking:cooked_fish", 6)
 end
 end)
