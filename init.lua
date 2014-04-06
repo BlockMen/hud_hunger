@@ -53,9 +53,11 @@ end
 local function costum_hud(player)
  local name = player:get_player_name()
 
- --fancy hotbar
- player:hud_set_hotbar_image("hud_hotbar.png")
- player:hud_set_hotbar_selected_image("hud_hotbar_selected.png")
+--fancy hotbar
+ if minetest.get_modpath("crafting") == nil then
+	player:hud_set_hotbar_image("hud_hotbar.png")
+	player:hud_set_hotbar_selected_image("hud_hotbar_selected.png")
+ end
 
  if minetest.setting_getbool("enable_damage") then
  --hunger
