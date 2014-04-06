@@ -187,3 +187,14 @@ if minetest.get_modpath("mtfoods") ~= nil then
 	overwrite("mtfoods:apple_cider", 2)
 	overwrite("mtfoods:cider_rack", 2)
 end
+
+if minetest.get_modpath("fruit") ~= nil then
+	overwrite("fruit:apple", 2)
+	overwrite("fruit:pear", 2)
+	overwrite("fruit:bananna", 3)
+	overwrite("fruit:orange", 2)
+end
+
+if minetest.get_modpath("mush45") ~= nil then
+	overwrite("mush45:meal", 4)
+end
