@@ -54,7 +54,6 @@ local function overwrite(name, hunger_change, replace_with_item, poisen)
 	minetest.registered_items[name] = tab
 end
 
-minetest.after(0.5, function()--ensure all other mods get loaded
 overwrite("default:apple", 2)
 if minetest.get_modpath("farming") ~= nil then
 	overwrite("farming:bread", 4)
@@ -117,6 +116,30 @@ if minetest.get_modpath("bushes") ~= nil then
 	overwrite("bushes:basket_pies", 15)
 end
 
+if minetest.get_modpath("bushes_classic") then
+	-- bushes_classic mod, as found in the plantlife modpack
+	local berries = {
+	    "strawberry",
+		"blackberry",
+		"blueberry",
+		"raspberry",
+		"gooseberry",
+		"mixed_berry"}
+	for _, berry in ipairs(berries) do
+		if berry ~= "mixed_berry" then
+			overwrite("bushes:"..berry, 1)
+		end
+		overwrite("bushes:"..berry.."_pie_raw", 2)
+		overwrite("bushes:"..berry.."_pie_cooked", 5)
+		overwrite("bushes:basket_"..berry, 15)
+	end
+end
+
+if minetest.get_modpath("mushroom") ~= nil then
+	overwrite("mushroom:brown", 1)
+	overwrite("mushroom:red", 1, "", 3)
+end
+
 if minetest.get_modpath("docfarming") ~= nil then
 	overwrite("docfarming:carrot", 2)
 	overwrite("docfarming:cucumber", 2)
@@ -164,4 +187,3 @@ if minetest.get_modpath("mtfoods") ~= nil then
 	overwrite("mtfoods:apple_cider", 2)
 	overwrite("mtfoods:cider_rack", 2)
 end
-end)
