@@ -13,6 +13,7 @@ local health_hud = {}
 local hunger_hud = {}
 local air_hud = {}
 local armor_hud = {}
+local armor_hud_bg = {}
 
 local SAVE_INTERVAL = 0.5*60--currently useless
 
@@ -50,6 +51,7 @@ end
 
 
 local function costum_hud(player)
+ local name = player:get_player_name()
 
  --fancy hotbar
  player:hud_set_hotbar_image("hud_hotbar.png")
@@ -68,7 +70,7 @@ local function costum_hud(player)
 		offset = HUD_HUNGER_OFFSET,
 	 })
 
-	 hunger_hud[player:get_player_name()] = player:hud_add({
+	 hunger_hud[name] = player:hud_add({
 		hud_elem_type = "statbar",
 		position = HUD_HUNGER_POS,
 		scale = {x=1, y=1},
@@ -89,7 +91,7 @@ local function costum_hud(player)
 		offset = HUD_HEALTH_OFFSET,
 	})
 
-	health_hud[player:get_player_name()] = player:hud_add({
+	health_hud[name] = player:hud_add({
 		hud_elem_type = "statbar",
 		position = HUD_HEALTH_POS,
 		scale = {x=1, y=1},
@@ -100,7 +102,7 @@ local function costum_hud(player)
 	})
 
  --air
-	air_hud[player:get_player_name()] = player:hud_add({
+	air_hud[name] = player:hud_add({
 		hud_elem_type = "statbar",
 		position = HUD_AIR_POS,
 		scale = {x=1, y=1},
@@ -112,17 +114,17 @@ local function costum_hud(player)
 
  --armor
  if HUD_SHOW_ARMOR then
-       player:hud_add({
+       armor_hud_bg[name] = player:hud_add({
 		hud_elem_type = "statbar",
 		position = HUD_ARMOR_POS,
 		scale = {x=1, y=1},
 		text = "hud_armor_bg.png",
-		number = 20,
+		number = 0,
 		alignment = {x=-1,y=-1},
 		offset = HUD_ARMOR_OFFSET,
 	})
 
-	armor_hud[player:get_player_name()] = player:hud_add({
+	armor_hud[name] = player:hud_add({
 		hud_elem_type = "statbar",
 		position = HUD_ARMOR_POS,
 		scale = {x=1, y=1},
@@ -170,6 +172,11 @@ local function update_hud(player)
 	if arm_out ~= arm then
 		hud.armor_out[name] = arm
 		player:hud_change(armor_hud[name], "number", arm)
+		if (not armor.def[name].count or armor.def[name].count == 0) and arm == 0 then
+		 player:hud_change(armor_hud_bg[name], "number", 0)
+		else
+		 player:hud_change(armor_hud_bg[name], "number", 20)
+		end
 	end
  --hunger
 	local h_out = tonumber(hud.hunger_out[name])
