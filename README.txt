@@ -57,7 +57,6 @@ Currently supported food:
 - Docfarming
 - Farming plus
 - Mtfoods
-- Bushes Classic (plantlife)
 - Seaplants (sea)
 - Mobfcooking
 
