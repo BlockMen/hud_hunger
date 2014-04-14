@@ -26,7 +26,7 @@ HUD_AIR_OFFSET = {x=15,y=-15}
 HUD_ARMOR_POS = {x=0.5,y=0.9}
 HUD_ARMOR_OFFSET = {x=-175, y=-15}
 
-HUD_TICK = 0.1
+HUD_TICK = 0.2
 HUD_HUNGER_TICK = 300
 
 HUD_ENABLE_HUNGER = minetest.setting_getbool("hud_hunger_enable")
@@ -259,8 +259,8 @@ minetest.after(2.5, function()
 	 main_timer = main_timer + dtime
 	 timer = timer + dtime
 	 timer2 = timer2 + dtime
-		if main_timer > HUD_TICK then
-		 main_timer = 0
+		if main_timer > HUD_TICK or timer > 4 or timer2 > HUD_HUNGER_TICK then
+		 if main_timer > HUD_TICK then main_timer = 0 end
 		 for _,player in ipairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
 
