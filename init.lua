@@ -26,6 +26,7 @@ HUD_AIR_OFFSET = {x=15,y=-15}
 HUD_ARMOR_POS = {x=0.5,y=0.9}
 HUD_ARMOR_OFFSET = {x=-175, y=-15}
 
+HUD_TICK = 0.1
 HUD_HUNGER_TICK = 300
 
 HUD_ENABLE_HUNGER = minetest.setting_getbool("hud_hunger_enable")
@@ -241,19 +242,26 @@ minetest.register_on_joinplayer(function(player)
 end)
 
 minetest.register_on_respawnplayer(function(player)
+	-- reset player breath since the engine doesnt
+	player:set_breath(11)
+	-- reset hunger (and save)
 	hud.hunger[player:get_player_name()] = 20
-	minetest.after(0.5, function()
-		if HUD_ENABLE_HUNGER then hud.set_hunger(player) end
-	end)
+	if HUD_ENABLE_HUNGER then
+		minetest.after(0.5, hud.set_hunger, player)
+	end
 end)
 
+local main_timer = 0
 local timer = 0
 local timer2 = 0
 minetest.after(2.5, function()
 	minetest.register_globalstep(function(dtime)
+	 main_timer = main_timer + dtime
 	 timer = timer + dtime
 	 timer2 = timer2 + dtime
-		for _,player in ipairs(minetest.get_connected_players()) do
+		if main_timer > HUD_TICK then
+		 main_timer = 0
+		 for _,player in ipairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
 
 			-- only proceed if damage is enabled
@@ -283,8 +291,9 @@ minetest.after(2.5, function()
 			 -- update all hud elements
 			 update_hud(player)
 			end
-		end
+		 end
 		
+		end
 		if timer > 4 then timer = 0 end
 		if timer2 > HUD_HUNGER_TICK then timer2 = 0 end
 	end)
