@@ -1,10 +1,10 @@
 Minetest mod "Better HUD"
 =========================
-version: 1.2
+Version: 1.3
 
 License of source code: WTFPL
 -----------------------------
-(c) Copyright BlockMen (2013)
+(c) Copyright BlockMen (2013-2014)
 
 
 License of textures:

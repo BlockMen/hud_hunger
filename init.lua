@@ -58,7 +58,7 @@ end
 local function custom_hud(player)
  local name = player:get_player_name()
 
---fancy hotbar
+-- fancy hotbar (only when no crafting mod present)
  if minetest.get_modpath("crafting") == nil then
 	player:hud_set_hotbar_image("hud_hotbar.png")
 	player:hud_set_hotbar_selected_image("hud_hotbar_selected.png")
@@ -272,9 +272,9 @@ minetest.after(2.5, function()
 				-- heal player by 1 hp if not dead and saturation is > 15 (of 30)
 				if h > 15 and hp > 0 and hud.air[name] > 0 then
 					player:set_hp(hp+1)
-				-- or damage player by 1 hp if saturation is < 2 (of 30) and player would not die
+				-- or damage player by 1 hp if saturation is < 2 (of 30)
 				elseif h <= 1 and minetest.setting_getbool("enable_damage") then
-					if hp-1 >= 1 then player:set_hp(hp-1) end
+					if hp-1 >= 0 then player:set_hp(hp-1) end
 				end
 			 end
 			 -- lower saturation by 1 point after xx seconds
