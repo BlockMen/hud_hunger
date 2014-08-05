@@ -18,29 +18,42 @@ local function poisenp(tick, time, time_left, player)
 	
 end
 
-function hud.item_eat(hunger_change, replace_with_item, poisen)
+function hud.item_eat(hunger_change, replace_with_item, poisen, heal)
 	return function(itemstack, user, pointed_thing)
 		if itemstack:take_item() ~= nil and user ~= nil then
 			local name = user:get_player_name()
 			local h = tonumber(hud.hunger[name])
-			h=h+hunger_change
-			if h>30 then h=30 end
-			hud.hunger[name]=h
-			hud.set_hunger(user)
-			itemstack:add_item(replace_with_item) -- note: replace_with_item is optional
-			--sound:eat
+			local hp = user:get_hp()
+
+			-- Saturation
+			if h < 30 and hunger_change then
+				h = h + hunger_change
+				if h > 30 then h = 30 end
+				hud.hunger[name] = h
+				hud.set_hunger(user)
+			end
+			-- Healing
+			if hp < 20 and heal then
+				hp = hp + heal
+				if hp > 20 then hp = 20 end
+				user:set_hp(hp)
+			end
+			-- Poison
 			if poisen then
 				poisenp(1.0, poisen, 0, user)
 			end
+
+			--sound:eat
+			itemstack:add_item(replace_with_item)
 		end
 		return itemstack
 	end
 end
 
-local function overwrite(name, hunger_change, replace_with_item, poisen)
+local function overwrite(name, hunger_change, replace_with_item, poisen, heal)
 	local tab = minetest.registered_items[name]
 	if tab == nil then return end
-	tab.on_use = hud.item_eat(hunger_change, replace_with_item, poisen)
+	tab.on_use = hud.item_eat(hunger_change, replace_with_item, poisen, heal)
 	minetest.registered_items[name] = tab
 end
 
