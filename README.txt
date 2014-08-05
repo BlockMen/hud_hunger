@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-Version: 1.3.1
+Version: 1.3.2
 
 License of source code: WTFPL
 -----------------------------
@@ -50,6 +50,7 @@ Currently supported food:
 - Bread (default)
 - Bushes
 - bushes_classic
+- Creatures
 - Dwarves (beer and such)
 - Docfarming
 - Fishing

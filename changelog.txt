@@ -69,3 +69,9 @@
 - Add compatibility for statbar scaling
 - Fix typo in depends.txt
 - Lower maintimer tick
+
+1.3.2
+-----
+- Fix dependecies (by Chris Beelby)
+- Add support for creatures mod
+- Add optional healing for food (by TenPlus1)
