@@ -215,3 +215,9 @@ if minetest.get_modpath("mobfcooking") ~= nil then
 	overwrite("mobfcooking:cooked_venison", 6)
 	overwrite("mobfcooking:cooked_fish", 6)
 end
+
+if minetest.get_modpath("creatures") ~= nil then
+	overwrite("creatures:meat", 6)
+	overwrite("creatures:flesh", 3)
+	overwrite("creatures:rotten_flesh", 3, "", 3)
+end
