@@ -234,3 +234,28 @@ if minetest.get_modpath("creatures") ~= nil then
 	overwrite("creatures:flesh", 3)
 	overwrite("creatures:rotten_flesh", 3, "", 3)
 end
+
+if minetest.get_modpath("ethereal") then
+   overwrite("ethereal:strawberry", 1)
+   overwrite("ethereal:banana", 4)
+   overwrite("ethereal:pine_nuts", 1)
+   overwrite("ethereal:bamboo_sprout", 0, "", 3)
+   overwrite("ethereal:fern_tubers", 1)
+   overwrite("ethereal:banana_bread", 7)
+   overwrite("ethereal:mushroom_plant", 2)
+   overwrite("ethereal:coconut_slice", 2)
+   overwrite("ethereal:golden_apple", 4, "", nil, 10)
+   overwrite("ethereal:wild_onion_plant", 2)
+   overwrite("ethereal:mushroom_soup", 4, "ethereal:bowl")
+   overwrite("ethereal:mushroom_soup_cooked", 6, "ethereal:bowl")
+   overwrite("ethereal:hearty_stew", 6, "ethereal:bowl", 3)
+   overwrite("ethereal:hearty_stew_cooked", 10, "ethereal:bowl")
+   if minetest.get_modpath("bucket") then
+  	overwrite("ethereal:bucket_cactus", 2, "bucket:bucket_empty")
+   end
+   overwrite("ethereal:fish_raw", 2)
+   overwrite("ethereal:fish_cooked", 5)
+   overwrite("ethereal:seaweed", 1)
+   overwrite("ethereal:yellowleaves", 1, "", nil, 1)
+   overwrite("ethereal:sashimi", 4)
+end

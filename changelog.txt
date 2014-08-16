@@ -75,3 +75,8 @@
 - Fix dependecies (by Chris Beelby)
 - Add support for creatures mod
 - Add optional healing for food (by TenPlus1)
+
+1.3.3
+-----
+- Prevent crash with armor mod and missing player
+- Add support for ethereal mod (by TenPlus1)

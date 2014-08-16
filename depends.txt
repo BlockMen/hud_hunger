@@ -1,10 +1,12 @@
 default
 animalmaterials?
+bucket?
 bushes?
 bushes_classic?
 creatures?
 docfarming?
 dwarves?
+ethereal?
 farming?
 farming_plus?
 fishing?
