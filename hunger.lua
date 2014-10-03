@@ -334,7 +334,6 @@ function hud.handle_node_actions(pos, oldnode, player, ext)
 		new = HUD_HUNGER_EXHAUST_MOVE
 	end
 	exhaus = exhaus + new
-	minetest.chat_send_all(exhaus)
 	if exhaus > HUD_HUNGER_EXHAUST_LVL then
 		exhaus = 0
 		local h = tonumber(hud.hunger[name])

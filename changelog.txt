@@ -80,3 +80,9 @@
 -----
 - Prevent crash with armor mod and missing player
 - Add support for ethereal mod (by TenPlus1)
+
+1.4
+---
+- New hunger mechanics/added experimental player-action based hunger
+- Better crosshair texture, switched to "new" default hand
+- Added support for farming redo mod, kpgmobs and jkmod
