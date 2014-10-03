@@ -106,7 +106,7 @@ end
 
 if minetest.get_modpath("fishing") ~= nil then
 	overwrite("fishing:fish_raw", 2)
-	overwrite("fishing:fish", 4)
+	overwrite("fishing:fish_cooked", 5)
 	overwrite("fishing:sushi", 6)
 	overwrite("fishing:shark", 4)
 	overwrite("fishing:shark_cooked", 8)
@@ -151,9 +151,9 @@ if minetest.get_modpath("mushroom") ~= nil then
 end
 
 if minetest.get_modpath("docfarming") ~= nil then
-	overwrite("docfarming:carrot", 2)
+	overwrite("docfarming:carrot", 3)
 	overwrite("docfarming:cucumber", 2)
-	overwrite("docfarming:corn", 2)
+	overwrite("docfarming:corn", 3)
 	overwrite("docfarming:potato", 4)
 	overwrite("docfarming:bakedpotato", 5)
 	overwrite("docfarming:raspberry", 3)
@@ -261,6 +261,60 @@ if minetest.get_modpath("ethereal") then
    overwrite("ethereal:seaweed", 1)
    overwrite("ethereal:yellowleaves", 1, "", nil, 1)
    overwrite("ethereal:sashimi", 4)
+end
+
+if minetest.get_modpath("farming") and farming.mod == "redo" then
+   overwrite("farming:bread", 6)
+   overwrite("farming:potato", 1)
+   overwrite("farming:baked_potato", 6)
+   overwrite("farming:cucumber", 4)
+   overwrite("farming:tomato", 4)
+   overwrite("farming:carrot", 3)
+   overwrite("farming:carrot_gold", 6, "", nil, 8)
+   overwrite("farming:corn", 3)
+   overwrite("farming:corn_cob", 5)
+   overwrite("farming:melon_slice", 2)
+   overwrite("farming:pumpkin_slice", 1)
+   overwrite("farming:pumpkin_bread", 9)
+   overwrite("farming:coffee_cup", 2, "farming:drinking_cup")
+   overwrite("farming:coffee_cup_hot", 3, "farming:drinking_cup", nil, 2)
+   overwrite("farming:cookie", 2)
+   overwrite("farming:chocolate_dark", 3)
+   overwrite("farming:donut", 4)
+   overwrite("farming:donut_chocolate", 6)
+   overwrite("farming:donut_apple", 6)
+   overwrite("farming:raspberries", 1)
+   if minetest.get_modpath("vessels") then
+	overwrite("farming:smoothie_raspberry", 2, "vessels:drinking_glass")
+   end
+   overwrite("farming:rhubarb", 1)
+   overwrite("farming:rhubarb_pie", 6)
+end
+
+if minetest.get_modpath("kpgmobs") ~= nil then
+	overwrite("kpgmobs:uley", 3)
+	overwrite("kpgmobs:meat", 6)
+	overwrite("kpgmobs:rat_cooked", 5)
+	overwrite("kpgmobs:med_cooked", 4)
+  	if minetest.get_modpath("bucket") then
+	   overwrite("kpgmobs:bucket_milk", 4, "bucket:bucket_empty")
+	end
+end
+
+if minetest.get_modpath("jkfarming") ~= nil then
+	overwrite("jkfarming:carrot", 3)
+	overwrite("jkfarming:corn", 3)
+	overwrite("jkfarming:melon_part", 2)
+	overwrite("jkfarming:cake", 3)
+end
+
+if minetest.get_modpath("jkanimals") ~= nil then
+	overwrite("jkanimals:meat", 6)
+end
+
+if minetest.get_modpath("jkwine") ~= nil then
+	overwrite("jkwine:grapes", 2)
+	overwrite("jkwine:winebottle", 1)
 end
 
 -- player-action based hunger changes

@@ -12,6 +12,10 @@ farming_plus?
 fishing?
 fruit?
 glooptest?
+jkanimals?
+jkfarming?
+jkwine?
+kpgmobs?
 mobfcooking?
 mobs?
 moretrees?
