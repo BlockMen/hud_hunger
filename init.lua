@@ -45,7 +45,17 @@ if dump(minetest.hud_replace_builtin) ~= "nil" then
 end
 
 HUD_TICK = 0.1
-HUD_HUNGER_TICK = 300
+
+--Some hunger settings
+hud.exhaustion = {} -- Exhaustion is experimental!
+
+HUD_HUNGER_TICK = 800 -- time in seconds after that 1 hunger point is taken 
+HUD_HUNGER_EXHAUST_DIG = 3  -- exhaustion increased this value after digged node
+HUD_HUNGER_EXHAUST_PLACE = 1 -- exhaustion increased this value after placed
+HUD_HUNGER_EXHAUST_MOVE = 0.3 -- exhaustion increased this value if player movement detected
+HUD_HUNGER_EXHAUST_LVL = 160 -- at what exhaustion player saturation gets lowerd
+
+
 
 HUD_ENABLE_HUNGER = minetest.setting_getbool("hud_hunger_enable")
 if HUD_ENABLE_HUNGER == nil then
@@ -247,6 +257,7 @@ minetest.register_on_joinplayer(function(player)
 	if HUD_ENABLE_HUNGER then
 		hud.hunger[name] = hud.get_hunger(player)
 		hud.hunger_out[name] = hud.hunger[name]
+		hud.exhaustion[name] = 0
 	end
 	hud.armor[name] = 0
 	hud.armor_out[name] = 0
@@ -263,9 +274,11 @@ minetest.register_on_respawnplayer(function(player)
 	-- reset player breath since the engine doesnt
 	player:set_breath(11)
 	-- reset hunger (and save)
-	hud.hunger[player:get_player_name()] = 20
+	local name = player:get_player_name()
+	hud.hunger[name] = 20
 	if HUD_ENABLE_HUNGER then
 		minetest.after(0.5, hud.set_hunger, player)
+		hud.exhaustion[name] = 0
 	end
 end)
 
@@ -308,6 +321,14 @@ minetest.after(2.5, function()
 
 			 -- update all hud elements
 			 update_hud(player)
+			
+			 if HUD_ENABLE_HUNGER then
+				local controls = player:get_player_control()
+				-- Determine if the player is walking
+				if controls.up or controls.down or controls.left or controls.right then
+					hud.handle_node_actions(nil, nil, player)
+				end
+			 end
 			end
 		 end
 		

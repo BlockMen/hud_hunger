@@ -11,6 +11,8 @@ local function poisenp(tick, time, time_left, player)
 	time_left = time_left + tick
 	if time_left < time then
 		minetest.after(tick, poisenp, tick, time, time_left, player)
+	else
+		--reset hud image
 	end
 	if player:get_hp()-1 > 0 then
 		player:set_hp(player:get_hp()-1)
@@ -40,6 +42,7 @@ function hud.item_eat(hunger_change, replace_with_item, poisen, heal)
 			end
 			-- Poison
 			if poisen then
+				--set hud-img
 				poisenp(1.0, poisen, 0, user)
 			end
 
@@ -259,3 +262,35 @@ if minetest.get_modpath("ethereal") then
    overwrite("ethereal:yellowleaves", 1, "", nil, 1)
    overwrite("ethereal:sashimi", 4)
 end
+
+-- player-action based hunger changes
+function hud.handle_node_actions(pos, oldnode, player, ext)
+	if not player or not player:is_player() then
+		return
+	end
+	local name = player:get_player_name()
+	local exhaus = hud.exhaustion[name]
+	local new = HUD_HUNGER_EXHAUST_PLACE
+	-- placenode event
+	if not ext then
+		new = HUD_HUNGER_EXHAUST_DIG
+	end
+	-- assume its send by main timer when movement detected
+	if not pos and not oldnode then
+		new = HUD_HUNGER_EXHAUST_MOVE
+	end
+	exhaus = exhaus + new
+	minetest.chat_send_all(exhaus)
+	if exhaus > HUD_HUNGER_EXHAUST_LVL then
+		exhaus = 0
+		local h = tonumber(hud.hunger[name])
+		h = h - 1
+		if h < 0 then h = 0 end
+		hud.hunger[name] = h
+		hud.set_hunger(player)
+	end
+	hud.exhaustion[name] = exhaus
+end
+
+minetest.register_on_placenode(hud.handle_node_actions)
+minetest.register_on_dignode(hud.handle_node_actions)
