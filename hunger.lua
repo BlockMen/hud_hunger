@@ -317,7 +317,7 @@ if minetest.get_modpath("jkwine") ~= nil then
 	overwrite("jkwine:winebottle", 1)
 end
 
-if minetest.get_modpath("animals_cow") ~= nil then
+if minetest.get_modpath("cooking") ~= nil then
 	overwrite("cooking:meat_beef_cooked", 5)
 end
 
