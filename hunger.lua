@@ -317,6 +317,9 @@ if minetest.get_modpath("jkwine") ~= nil then
 	overwrite("jkwine:winebottle", 1)
 end
 
+if minetest.get_modpath("animals_modpack") ~= nil then
+	overwrite("cooking:meat_beef_cooked", 5)
+
 -- player-action based hunger changes
 function hud.handle_node_actions(pos, oldnode, player, ext)
 	if not player or not player:is_player() then
