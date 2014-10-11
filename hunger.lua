@@ -318,7 +318,15 @@ if minetest.get_modpath("jkwine") ~= nil then
 end
 
 if minetest.get_modpath("cooking") ~= nil then
-	overwrite("cooking:meat_beef_cooked", 5)
+	overwrite("cooking:meat_beef_cooked", 4)
+        overwrite("cooking:fish_bluewhite_cooked", 3)
+        overwrite("cooking:fish_clownfish_cooked", 1)
+	overwrite("cooking:meat_chicken_cooked", 2)
+	overwrite("cooking:meat_cooked", 2)
+	overwrite("cooking:meat_pork_cooked", 3)
+	overwrite("cooking:meat_toxic_cooked", -3)
+	overwrite("cooking:meat_venison_cooked", 3)
+	overwrite("cooking:meat_undead_cooked", 1)
 end
 
 -- player-action based hunger changes
