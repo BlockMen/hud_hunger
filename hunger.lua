@@ -317,6 +317,18 @@ if minetest.get_modpath("jkwine") ~= nil then
 	overwrite("jkwine:winebottle", 1)
 end
 
+if minetest.get_modpath("cooking") ~= nil then
+	overwrite("cooking:meat_beef_cooked", 4)
+        overwrite("cooking:fish_bluewhite_cooked", 3)
+        overwrite("cooking:fish_clownfish_cooked", 1)
+	overwrite("cooking:meat_chicken_cooked", 2)
+	overwrite("cooking:meat_cooked", 2)
+	overwrite("cooking:meat_pork_cooked", 3)
+	overwrite("cooking:meat_toxic_cooked", -3)
+	overwrite("cooking:meat_venison_cooked", 3)
+	overwrite("cooking:meat_undead_cooked", 1)
+end
+
 -- player-action based hunger changes
 function hud.handle_node_actions(pos, oldnode, player, ext)
 	if not player or not player:is_player() then
