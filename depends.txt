@@ -3,6 +3,7 @@ animalmaterials?
 bucket?
 bushes?
 bushes_classic?
+cooking?
 creatures?
 docfarming?
 dwarves?
