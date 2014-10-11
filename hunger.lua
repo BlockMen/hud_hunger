@@ -319,6 +319,7 @@ end
 
 if minetest.get_modpath("animals_modpack") ~= nil then
 	overwrite("cooking:meat_beef_cooked", 5)
+end
 
 -- player-action based hunger changes
 function hud.handle_node_actions(pos, oldnode, player, ext)
