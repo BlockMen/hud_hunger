@@ -329,6 +329,14 @@ if minetest.get_modpath("cooking") ~= nil then
 	overwrite("cooking:meat_undead_cooked", 1)
 end
 
+-- ferns mod of plantlife_modpack
+if minetest.get_modpath("ferns") ~= nil then
+	overwrite("ferns:fiddlehead", 1, "", 1)
+	overwrite("ferns:fiddlehead_roasted", 3)
+	overwrite("ferns:ferntuber_roasted", 3)
+	overwrite("ferns:horsetail_01", 1)
+end
+
 -- player-action based hunger changes
 function hud.handle_node_actions(pos, oldnode, player, ext)
 	if not player or not player:is_player() then
