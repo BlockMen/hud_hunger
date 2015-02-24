@@ -149,12 +149,14 @@ local function custom_hud(player)
 
  --armor
  if HUD_SHOW_ARMOR then
+	local a = hud.armor[name]
+	if a ~= nil and a > 0 then a = 20 end
        armor_hud_bg[name] = player:hud_add({
 		hud_elem_type = "statbar",
 		position = HUD_ARMOR_POS,
 		size = HUD_SIZE,
 		text = "hud_armor_bg.png",
-		number = 0,
+		number = a,
 		alignment = {x=-1,y=-1},
 		offset = HUD_ARMOR_OFFSET,
 	})
@@ -163,7 +165,7 @@ local function custom_hud(player)
 		position = HUD_ARMOR_POS,
 		size = HUD_SIZE,
 		text = "hud_armor_fg.png",
-		number = 0,
+		number = hud.armor[name],
 		alignment = {x=-1,y=-1},
 		offset = HUD_ARMOR_OFFSET,
 	})
@@ -263,7 +265,7 @@ minetest.register_on_joinplayer(function(player)
 	hud.armor_out[name] = 0
 	local air = player:get_breath()
 	hud.air[name] = air
-	minetest.after(0.5, function()
+	minetest.after(2.5, function()
 		hide_builtin(player)
 		custom_hud(player)
 		if HUD_ENABLE_HUNGER then hud.set_hunger(player) end
