@@ -1,10 +1,10 @@
 Minetest mod "Better HUD"
 =========================
-Version: 1.4
+Version: 1.4.1
 
 License of source code: WTFPL
 -----------------------------
-(c) Copyright BlockMen (2013-2014)
+(c) Copyright BlockMen (2013-2015)
 
 
 
@@ -79,7 +79,7 @@ hud_armor_fg.png - Stu (CC BY-SA 3.0), modified by BlockMen
 hud_armor_bg.png - Stu (CC BY-SA 3.0), modified by BlockMen
 
 everything else is WTFPL:
-(c) Copyright BlockMen (2013-2014)
+(c) Copyright BlockMen (2013-2015)
 
 This program is free software. It comes without any warranty, to
 the extent permitted by applicable law. You can redistribute it
