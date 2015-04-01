@@ -360,6 +360,11 @@ if minetest.get_modpath("ferns") ~= nil then
 	overwrite("ferns:horsetail_01", 1)
 end
 
+if minetest.get_modpath("pizza") ~= nil then
+	overwrite("pizza:pizza", 30, "", nil, 30)
+	overwrite("pizza:pizzaslice", 5, "", nil, 5)
+end
+
 -- player-action based hunger changes
 function hud.handle_node_actions(pos, oldnode, player, ext)
 	if not player or not player:is_player() then
