@@ -361,8 +361,8 @@ if minetest.get_modpath("ferns") ~= nil then
 end
 
 if minetest.get_modpath("pizza") ~= nil then
-	overwrite("pizza:pizza", 6, "", nil, 6)
-	overwrite("pizza:pizzaslice", 1, "", nil, 1)
+	overwrite("pizza:pizza", 30, "", nil, 30)
+	overwrite("pizza:pizzaslice", 5, "", nil, 5)
 end
 
 -- player-action based hunger changes
