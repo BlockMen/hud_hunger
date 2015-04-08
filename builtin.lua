@@ -80,7 +80,7 @@ if damage_enabled then
     })
 
     local start_value = 0
-    if show_hunger then
+    if hud.show_hunger then
 	start_value = 20
     end
 

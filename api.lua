@@ -11,7 +11,7 @@ local sb_bg = {}	-- statbar background ids
 local items = hud.registered_items
 
 local function throw_error(msg)
-	minetest.chat_send_all(msg)
+	minetest.log("error", "Better HUD[error]: " .. msg)
 end
 
 
@@ -67,7 +67,7 @@ function hud.register(name, def)
 end
 
 function hud.change_item(player, name, def)
-	if not player or not name or not def then
+	if not player or not player:is_player() or not name or not def then
 		throw_error("Not enough parameters given to change HUD item")
 		return false
 	end
@@ -185,7 +185,10 @@ end
 minetest.register_on_joinplayer(function(player)
 
 	-- first: hide the default statbars
-	player:hud_set_flags({healthbar = false, breathbar = false})
+	local hud_flags = player:hud_get_flags()
+	hud_flags.healthbar = false
+	hud_flags.breathbar = false
+	player:hud_set_flags(hud_flags)
 
 	-- now add the backgrounds (e.g. for statbars)
 	for _,item in pairs(sb_bg) do
