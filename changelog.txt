@@ -1,3 +1,9 @@
+2.0.1
+-----
+- Fix disappearing hotbar (reported by poet-nohit)
+- Fix unused global var
+- Added one more check to catch probably incorrect players
+
 2.0
 ---
 - Complete rewrite
