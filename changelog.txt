@@ -1,3 +1,8 @@
+2.1
+---
+- Added "ItemWheel" (experimental)
+- Fixed disapperaring hunger bar (reported by poet-nohit)
+
 2.0.1
 -----
 - Fix disappearing hotbar (reported by poet-nohit)

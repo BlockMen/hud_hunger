@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-Version: 2.0.1
+Version: 2.1
 
 (c) Copyright BlockMen (2013-2015)
 
@@ -15,6 +15,7 @@ Changes in builtin HUD items:
 - Uses better textures for Hotbar
 - Uses texture for crosshair
 - Positions of builtin statbars can be changed via "hud.conf" file
+- Experimental "ItemWheel" that replaces the hotbar (must be enabled by adding "hud_item_wheel = true" in minetest.conf)
 
 This mod gets provided as Modpack aswell, which includes the hunger mod (https://github.com/BlockMen/hunger)
 More information concerning the hunger mechanics can be get there.
