@@ -79,17 +79,12 @@ if damage_enabled then
 	max = 20,
     })
 
-    local start_value = 0
-    if hud.show_hunger then
-	start_value = 20
-    end
-
     hud.register("hunger", {
 	hud_elem_type = "statbar",
 	position = HUD_HUNGER_POS,
 	size = HUD_SB_SIZE,
 	text = "hud_hunger_fg.png",
-	number = start_value,
+	number = 0,
 	alignment = {x=-1,y=-1},
 	offset = HUD_HUNGER_OFFSET,
 	background = "hud_hunger_bg.png",
