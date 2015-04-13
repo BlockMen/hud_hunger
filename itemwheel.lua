@@ -91,7 +91,7 @@ local function update_wheel(player)
 
 	-- update wielded buffer
 	if hb[name].id[2] ~= nil then
-		hb[name].item = item
+		hb[name].item = item2
 	end
 end
 
