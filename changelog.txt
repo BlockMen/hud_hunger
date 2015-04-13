@@ -1,3 +1,8 @@
+2.1.2
+-----
+- Fixed crash caused by animated nodes (reported by Krock)
+- Fixed "freezing" of empty slots (reported by kilbith)
+
 2.1.1
 -----
 - Added itemcounting/wearout info
