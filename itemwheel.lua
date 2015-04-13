@@ -22,10 +22,11 @@ local function update_wheel(player)
 	-- get the displayed items
 	local inv = player:get_inventory()
 	local item = hb[name].item
+	local index = hb[name].index
 	local item2 = player:get_wielded_item():get_name()
 
 	-- update all items when wielded has changed
-	if item and item2 and item ~= item2 or item == "wheel_init" then
+	if item and item2 and item ~= item2 or item == "wheel_init" or (index and index ~= i) then
 		local items = {}
 		items[1] = inv:get_stack("main", i1):get_name() or nil
 		items[2] = item2
@@ -96,6 +97,7 @@ local function update_wheel(player)
 	-- update wielded buffer
 	if hb[name].id[2] ~= nil then
 		hb[name].item = item2
+		hb[name].index = i
 	end
 end
 
@@ -104,6 +106,7 @@ minetest.register_on_joinplayer(function(player)
     hb[name]= {}
     hb[name].id = {}
     hb[name].item = "wheel_init"
+    hb[name].index = 1
 
     minetest.after(0.1, function()
 
