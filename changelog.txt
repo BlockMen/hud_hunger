@@ -1,3 +1,11 @@
+2.1.1
+-----
+- Added itemcounting/wearout info
+- Added support for hud scaling
+- Fixed typo causing endless updating
+- Fixed image scaling of some textures (like glass)
+- Improved ItemWheel image
+
 2.1
 ---
 - Added "ItemWheel" (experimental)
