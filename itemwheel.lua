@@ -1,4 +1,5 @@
 local hb = {}
+local scale = tonumber(core.setting_get("hud_scaling")) or 1
 
 local function update_wheel(player)
 	local name = player:get_player_name()
@@ -29,16 +30,26 @@ local function update_wheel(player)
 		items[1] = inv:get_stack("main", i1):get_name() or nil
 		items[2] = item2
 		items[3] = inv:get_stack("main", i3):get_name() or nil
+		local num = player:get_wielded_item():get_count()
+		local wear = player:get_wielded_item():get_wear()
+		if num < 2 then
+			num = ""
+		else
+			num = tostring(num)
+		end
+		if wear > 0 then
+			num = tostring(100 - math.floor((wear/65535)*100)) .. "%"
+		end
 
 		for n, m in pairs(items) do
 			-- some default values
 			local image = "hud_wielded.png"
-			local scale = false
-			local s1 = {x = 1, y = 1}
-			local s2 = {x = 3, y = 3}
+			local need_scale = false
+			local s1 = {x = 1*scale, y = 1*scale}
+			local s2 = {x = 3*scale, y = 3*scale}
 			if n ~= 2 then
-				s1 = {x = 0.6, y = 0.6}
-				s2 = {x = 2, y = 2}
+				s1 = {x = 0.6*scale, y = 0.6*scale}
+				s2 = {x = 2*scale, y = 2*scale}
 			end
 
 			-- get the images
@@ -46,22 +57,22 @@ local function update_wheel(player)
 			if def then
 				if def.tiles then
 					image = minetest.inventorycube(def.tiles[1], def.tiles[6] or def.tiles[3] or def.tiles[1], def.tiles[3] or def.tiles[1])
-					scale = true
+					need_scale = true
 				end
 				if def.inventory_image and def.inventory_image ~= "" then
 					image = def.inventory_image
-					scale = false
+					need_scale = false
 				end
 				if def.wielded_image and def.wielded_image ~= "" then
 					image = def.wielded_image
-					scale = false
+					need_scale = false
 				end
 			end
 
 			-- get the id and update hud elements
 			local id = hb[name].id[n]
 			if id and image then
-				if scale then
+				if need_scale then
 					player:hud_change(id, "scale", s1)
 				else
 					player:hud_change(id, "scale", s2)
@@ -72,6 +83,9 @@ local function update_wheel(player)
 				--end
 				player:hud_change(id, "text", image)
 			end
+		end
+		if hb[name].id[4] then
+			player:hud_change(hb[name].id[4], "text", num)
 		end
 	end
 
@@ -97,9 +111,9 @@ minetest.register_on_joinplayer(function(player)
 	player:hud_add({
 		hud_elem_type = "image",
 		text = "hud_new.png",
-		position = {x=0.5, y=1},
-		scale = {x=1, y=1},
-		alignment = {x=0, y=-1},
+		position = {x = 0.5, y = 1},
+		scale = {x = 1*scale, y = 1*scale},
+		alignment = {x = 0, y = -1},
 		offset = {x = 0, y = 0}
 	})
 
@@ -107,34 +121,59 @@ minetest.register_on_joinplayer(function(player)
 		hud_elem_type = "image",
 		text = "hud_wielded.png",
 		position = {x = 0.5, y = 1},
-		scale = {x = 1, y = 1},
+		scale = {x = 1*scale, y = 1*scale},
 		alignment = {x = 0, y = -1},
-		offset = {x = -75, y = -8}
+		offset = {x = -75*scale, y = -8*scale}
 	})
 
 	hb[name].id[2] = player:hud_add({
 		hud_elem_type = "image",
 		text = "hud_wielded.png",
 		position = {x = 0.5, y = 1},
-		scale = {x = 3, y = 3},
+		scale = {x = 3*scale, y = 3*scale},
 		alignment = {x = 0, y = -1},
-		offset = {x = 0, y = -20}
+		offset = {x = 0, y = -12*scale}
 	})
 
 	hb[name].id[3] = player:hud_add({
 		hud_elem_type = "image",
 		text = "hud_wielded.png",
 		position = {x = 0.5, y = 1},
-		scale = {x = 1, y = 1},
+		scale = {x = 1*scale, y = 1*scale},
 		alignment = {x = 0, y = -1},
-		offset = {x = 75, y = -8}
+		offset = {x = 75*scale, y = -8*scale}
+	})
+
+	hb[name].id[4] = player:hud_add({
+		hud_elem_type = "text",
+		position = {x = 0.5, y = 1},
+		offset = {x = 35*scale, y = -55*scale},
+		alignment = {x = 0, y = -1},
+		number = 0xffffff,
+		text = "",
 	})
 
 	-- init item wheel
-	hb[name].item = "wheel_init"
-	update_wheel(player)
+	minetest.after(0, function()
+		hb[name].item = "wheel_init"
+		update_wheel(player)
+	end)
     end)
 end)
+
+local function update_wrapper(a, b, player)
+	local name = player:get_player_name()
+	if not name then
+		return
+	end
+	minetest.after(0, function()
+		hb[name].item = "wheel_init"
+		update_wheel(player)
+	end)
+end
+
+minetest.register_on_placenode(update_wrapper)
+minetest.register_on_dignode(update_wrapper)
 
 
 local timer = 0
