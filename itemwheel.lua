@@ -55,7 +55,7 @@ local function update_wheel(player)
 			-- get the images
 			local def = minetest.registered_items[m]
 			if def then
-				if def.tiles then
+				if def.tiles and (def.tiles[1] and not def.tiles[1].name) then
 					image = minetest.inventorycube(def.tiles[1], def.tiles[6] or def.tiles[3] or def.tiles[1], def.tiles[3] or def.tiles[1])
 					need_scale = true
 				end
