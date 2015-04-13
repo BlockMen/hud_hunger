@@ -67,6 +67,10 @@ local function update_wheel(player)
 					image = def.wielded_image
 					need_scale = false
 				end
+				-- needed for nodes with inventory cube inv imges, e.g. glass
+				if string.find(image, 'inventorycube') then
+					need_scale = true
+				end
 			end
 
 			-- get the id and update hud elements
