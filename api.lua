@@ -66,6 +66,55 @@ function hud.register(name, def)
 	return true
 end
 
+-- swaps stabar positions
+function hud.swap_statbar(player, item1, item2)
+	if not player or not item1 or not item2 then
+		throw_error("Not enough parameters given to swap statbars")
+		return false
+	end
+
+	local def1 = items[item1] or nil
+	local def2 = items[item2] or nil
+
+	if not def1 or not def2 then
+		throw_error("Can't swap statbars. Given statbars are not correct")
+		return false
+	end
+
+	local pos_swap = false
+	local p_name = player:get_player_name()
+	local elem1 = hud_id[p_name.."_"..item1]
+	local elem2 = hud_id[p_name.."_"..item2]
+
+	player:hud_change(elem2.id, "offset", def1.offset)
+	player:hud_change(elem1.id, "offset", def2.offset)
+
+	if def1.position.x ~= def2.position.x or def1.position.y ~= def2.position.y then
+		player:hud_change(elem2.id, "position", def1.position)
+		player:hud_change(elem1.id, "position", def2.position)
+		pos_swap = true
+	end
+
+	-- do the items have backgrounds? if so, swap them aswell
+	local bg1 = hud_id[p_name.."_"..item1.."_bg"] or nil
+	local bg2 = hud_id[p_name.."_"..item2.."_bg"] or nil
+	if bg1 ~= nil and bg1.id then
+		player:hud_change(bg1.id, "offset", def2.offset)
+		if pos_swap == true then
+			player:hud_change(bg1.id, "position", def2.position)
+		end	
+	end
+	if bg2 ~= nil and bg2.id then
+		player:hud_change(bg2.id, "offset", def1.offset)
+		if pos_swap == true then
+			player:hud_change(bg2.id, "position", def1.position)
+		end	
+	end
+
+	return true
+
+end
+
 function hud.change_item(player, name, def)
 	if not player or not player:is_player() or not name or not def then
 		throw_error("Not enough parameters given to change HUD item")
@@ -106,6 +155,7 @@ function hud.change_item(player, name, def)
 				if bg and bg.max and bg.max < 1 and def.max and def.max > bg.max then
 					player:hud_change(bg.id, "number", def.max)
 					bg.max = def.max
+					bg.number = def.max
 				end	
 			end
 		end
@@ -119,27 +169,9 @@ function hud.change_item(player, name, def)
 
 	if def.offset and elem.offset then
 		if def.item_name and def.offset == "item" then
-			local i_name2 = player:get_player_name().."_"..def.item_name
-			local elem2 = hud_id[i_name2]
-			if elem2 then
-				local p2 = elem2.offset
-				local p1 = elem.offset
-				player:hud_change(elem2.id, "offset", p1)
-				player:hud_change(elem.id, "offset", p2)
-				elem2.offset = p1
-				elem.offset = p2
-				if elem.background then
-					local elem3 = hud_id[i_name.."_bg"]
-					if elem3 and elem3.offset then
-						player:hud_change(elem3.id, "offset", p2)
-						elem3.offset = p2
-						local elem4 = hud_id[i_name2.."_bg"]
-						if elem4 and elem4.offset then
-							player:hud_change(elem4.id, "offset", p1)
-							elem4.offset = p1
-						end
-					end
-				end
+			-- for legacy reasons
+			if def.item_name then
+				hud.swap_statbar(player, name, def.item_name)
 			end
 		else
 			player:hud_change(elem.id, "offset", def.offset)
@@ -190,7 +222,7 @@ minetest.register_on_joinplayer(function(player)
 	hud_flags.breathbar = false
 	player:hud_set_flags(hud_flags)
 
-	-- now add the backgrounds (e.g. for statbars)
+	-- now add the backgrounds for statbars
 	for _,item in pairs(sb_bg) do
 		add_hud_item(player, _.."_bg", item)
 	end
