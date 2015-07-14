@@ -1,6 +1,6 @@
 Minetest mod "Better HUD"
 =========================
-Version: 2.1.2
+Version: 2.1.3
 
 (c) Copyright BlockMen (2013-2015)
 
