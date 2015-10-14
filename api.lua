@@ -86,6 +86,10 @@ function hud.swap_statbar(player, item1, item2)
 	local elem1 = hud_id[p_name.."_"..item1]
 	local elem2 = hud_id[p_name.."_"..item2]
 
+	if not elem1 or not elem2 or not elem1.id or not elem2.id then
+		return false
+	end
+
 	player:hud_change(elem2.id, "offset", def1.offset)
 	player:hud_change(elem1.id, "offset", def2.offset)
 
