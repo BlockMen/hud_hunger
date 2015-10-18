@@ -1,6 +1,6 @@
 Modpack "Better HUD and hunger"
 ===============================
-Version: 2.1.4
+ModPack-Version: 2.x.0
 
 Copyright (c) 2013-2015 BlockMen <blockmen2015@gmail.com>
 
