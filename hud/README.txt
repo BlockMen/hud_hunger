@@ -1,8 +1,8 @@
 Minetest mod "Better HUD"
 =========================
-Version: 2.1.4
+Version: 2.1.5
 
-(c) Copyright BlockMen (2013-2015)
+(c) Copyright BlockMen (2013-2016)
 
 
 About this mod:
@@ -26,7 +26,7 @@ This mod supports the 3d_armor mod by stu (https://github.com/stujones11/minetes
 
 License:
 ~~~~~~~~
-(c) Copyright BlockMen (2013-2015)
+(c) Copyright BlockMen (2013-2016)
 
 
 Code:

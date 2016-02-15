@@ -1,8 +1,8 @@
 Modpack "Better HUD and hunger"
 ===============================
-ModPack-Version: 2.x.0
+ModPack-Version: 2.x.1
 
-Copyright (c) 2013-2015 BlockMen <blockmen2015@gmail.com>
+Copyright (c) 2013-2016 BlockMen <blockmen2015@gmail.com>
 
 
 About this mod:
@@ -36,7 +36,7 @@ For more information how to register more food see API.txt
 
 License:
 ~~~~~~~~
-(c) Copyright BlockMen (2013-2015)
+(c) Copyright BlockMen (2013-2016)
 
 
 Code:

@@ -1,3 +1,7 @@
+2.1.5
+-----
+- Fixed armor not being updated correct due armor mod changes
+
 2.1.4
 -----
 - Fixed unhandled exception in hud.swap_statbar()
