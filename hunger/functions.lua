@@ -152,7 +152,7 @@ local function hunger_globaltimer(dtime)
 				end
 
 				-- or damage player by 1 hp if saturation is < 2 (of 30)
-				if tonumber(tab.lvl) < HUNGER_STARVE_LVL then
+				if tonumber(tab.lvl) < HUNGER_STARVE_LVL and hp > 0 then
 					player:set_hp(hp - HUNGER_STARVE)
 				end
 			end
