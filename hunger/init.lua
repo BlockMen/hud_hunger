@@ -14,7 +14,7 @@ HUNGER_EXHAUST_LVL = 160	-- at what exhaustion player saturation gets lowered
 HUNGER_HEAL = 1				-- number of HP player gets healed after HUNGER_HEALTH_TICK
 HUNGER_HEAL_LVL = 15		-- lower level of saturation needed to get healed
 HUNGER_STARVE = 1			-- number of HP player gets damaged by hunger after HUNGER_HEALTH_TICK
-HUNGER_STARVE_LVL = 3		-- level of staturation that causes starving
+HUNGER_STARVE_LVL = 1		-- level of staturation that causes starving
 
 HUNGER_MAX = 30				-- maximum level of saturation
 
