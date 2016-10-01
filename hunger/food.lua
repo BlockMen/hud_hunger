@@ -140,7 +140,7 @@ end
 
 if minetest.get_modpath("mtfoods") ~= nil then
 	register_food("mtfoods:dandelion_milk", 1)
-	register_food("mtfoods:sugar", 1)
+	register_food("mtfoods:sugar", 1/6)
 	register_food("mtfoods:short_bread", 4)
 	register_food("mtfoods:cream", 1)
 	register_food("mtfoods:chocolate", 2)
