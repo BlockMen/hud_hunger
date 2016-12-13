@@ -107,6 +107,7 @@ if damage_enabled then
 		alignment = {x = -1, y = -1},
 		offset = HUD_HUNGER_OFFSET,
 		background = "hud_hunger_bg.png",
+		autohide_bg = false,
 		max = 0,
     })
 else

@@ -152,7 +152,7 @@ local function hunger_globaltimer(dtime)
 				end
 
 				-- or damage player by 1 hp if saturation is < 2 (of 30)
-				if tonumber(tab.lvl) < HUNGER_STARVE_LVL then
+				if tonumber(tab.lvl) < HUNGER_STARVE_LVL and hp > 0 then
 					player:set_hp(hp - HUNGER_STARVE)
 				end
 			end
@@ -233,8 +233,11 @@ function hunger.item_eat(hunger_change, replace_with_item, poisen, heal, sound)
 		local sat = tonumber(hunger.players[name].lvl or 0)
 		local hp = user:get_hp()
 		-- Saturation
-		if sat < HUNGER_MAX and hunger_change then
+		if sat <= HUNGER_MAX and hunger_change then
 			sat = sat + hunger_change
+			if sat > HUNGER_MAX then
+				sat = HUNGER_MAX
+			end
 			hunger.update_hunger(user, sat)
 		end
 		-- Healing

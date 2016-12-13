@@ -1,13 +1,13 @@
 local register_food = hunger.register_food
 
-register_food("default:apple", 2)
+register_food("default:apple", 1)
 
 if minetest.get_modpath("farming") ~= nil then
 	register_food("farming:bread", 4)
 end
 
 if minetest.get_modpath("flowers") ~= nil then
-		register_food("flowers:mushroom_brown", 1)
+		register_food("flowers:mushroom_brown", -4)
 		register_food("flowers:mushroom_red", 1, "", 3)
 end
 
@@ -99,11 +99,12 @@ if minetest.get_modpath("bushes_classic") then
 		"mixed_berry"}
 	for _, berry in ipairs(berries) do
 		if berry ~= "mixed_berry" then
-			register_food("bushes:"..berry, 1)
+			register_food("bushes:"..berry, 0.5)
 		end
-		register_food("bushes:"..berry.."_pie_raw", 2)
-		register_food("bushes:"..berry.."_pie_cooked", 5)
-		register_food("bushes:basket_"..berry, 15)
+		register_food("bushes:"..berry.."_pie_raw", 5)
+		register_food("bushes:"..berry.."_pie_slice", 1.5)
+		register_food("bushes:"..berry.."_pie_cooked", 9)
+		register_food("bushes:basket_"..berry, 27, "bushes:basket_empty")
 	end
 end
 
@@ -130,7 +131,7 @@ if minetest.get_modpath("farming_plus") ~= nil then
 	register_food("farming_plus:carrot_item", 3)
 	register_food("farming_plus:banana", 2)
 	register_food("farming_plus:orange_item", 2)
-	register_food("farming:pumpkin_bread", 4)
+	register_food("farming:pumpkin_bread", 5)
 	register_food("farming_plus:strawberry_item", 2)
 	register_food("farming_plus:tomato_item", 2)
 	register_food("farming_plus:potato_item", 4)
@@ -139,7 +140,7 @@ end
 
 if minetest.get_modpath("mtfoods") ~= nil then
 	register_food("mtfoods:dandelion_milk", 1)
-	register_food("mtfoods:sugar", 1)
+	register_food("mtfoods:sugar", 1/6)
 	register_food("mtfoods:short_bread", 4)
 	register_food("mtfoods:cream", 1)
 	register_food("mtfoods:chocolate", 2)
