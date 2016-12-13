@@ -7,7 +7,7 @@ if minetest.get_modpath("farming") ~= nil then
 end
 
 if minetest.get_modpath("flowers") ~= nil then
-		register_food("flowers:mushroom_brown", 1)
+		register_food("flowers:mushroom_brown", -4)
 		register_food("flowers:mushroom_red", 1, "", 3)
 end
 
